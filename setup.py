@@ -31,9 +31,7 @@ setup(
     long_description=read('README.rst'),
     version=shop_simplenotifications.__version__,
     install_requires=[
-        'django-cms==2.1.3',
-        #TODO martin: comment in this line as soon as 0.0.10 is on PyPi
-        #'django-shop',
+        'django-shop',
     ],
 
     author='Martin Brochhaus',

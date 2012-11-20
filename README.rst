@@ -52,10 +52,10 @@ your choice, there are templates for all email subjects and bodies. In order
 to override the defaults, add the folowing templates to your
 ``templates/shop_simplenotifications/`` folder:
 
-  * confirmed_subject.html
-  * confirmed_body.html
-  * payment_instructions_subject.html
-  * payment_instructions_body.html
+  * confirmed_subject.txt
+  * confirmed_body.txt
+  * payment_instructions_subject.txt
+  * payment_instructions_body.txt
 
 All templates have a ``request`` and an ``order`` variable in their context.
 
