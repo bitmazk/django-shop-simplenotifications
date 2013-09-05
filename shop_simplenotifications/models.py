@@ -51,19 +51,20 @@ def payment_instructions_email_notification(sender, **kwargs):
             'shop_simplenotifications/payment_instructions_body.txt'
     request = kwargs.get('request')
     order = kwargs.get('order')
-    subject = loader.render_to_string(
-        subject_template_name,
-        RequestContext(request, {'order': order})
-    )
-    subject = subject.join(subject.splitlines())
-    body = loader.render_to_string(
-        body_template_name,
-        RequestContext(request, {'order': order})
-    )
-    from_email = getattr(settings, 'SN_FROM_EMAIL',
-                         settings.DEFAULT_FROM_EMAIL)
-    send_mail(subject, body, from_email,
-              [order.user.email,], fail_silently=False)
+    if order.user and order.user.email:
+        subject = loader.render_to_string(
+            subject_template_name,
+            RequestContext(request, {'order': order})
+        )
+        subject = subject.join(subject.splitlines())
+        body = loader.render_to_string(
+            body_template_name,
+            RequestContext(request, {'order': order})
+        )
+        from_email = getattr(settings, 'SN_FROM_EMAIL',
+                             settings.DEFAULT_FROM_EMAIL)
+        send_mail(subject, body, from_email,
+                  [order.user.email,], fail_silently=False)
 
 confirmed.connect(payment_instructions_email_notification)
 
