@@ -57,6 +57,10 @@ to override the defaults, add the folowing templates to your
   * payment_instructions_subject.txt
   * payment_instructions_body.txt
 
+You have the option of providing html versions of `confirmed_body.txt` and
+`payment_instructions_body.txt` (in addition to the .txt files), which will be
+sent as an alternative content type for email clients that render html.
+
 All templates have a ``request`` and an ``order`` variable in their context. 
 
 Please note that the sender in the PaymentBackend should pass the ``request`` as well. 
